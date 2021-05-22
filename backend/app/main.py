@@ -8,3 +8,4 @@ app = FastAPI()
 @app.get('/products')
 async def get_products():
     return products
+
