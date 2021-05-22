@@ -9,4 +9,3 @@ app = FastAPI()
 async def get_products():
     return products
 
-
