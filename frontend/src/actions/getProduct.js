@@ -1,9 +1,5 @@
 import Axios from "axios"
-import {
-  PRODUCT_DETAILS_FAIL,
-  PRODUCT_DETAILS_REQUEST,
-  PRODUCT_DETAILS_SUCCESS
-} from "../constants/productConstants"
+import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS } from "constants/productConstants"
 
 export const getProduct = (productId) => async (dispatch) => {
   dispatch({
