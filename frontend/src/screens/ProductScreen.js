@@ -36,6 +36,7 @@ export default function ProductScreen(props) {
               <div className="col-1">
                 <ul>
                   <li><h1>{product.name}</h1></li>
+                  <li><h1>{product.author}</h1></li>
                   <li><Rating rating={product.rating} numReviews={product.numReviews} /></li>
                   <li>Price: ${product.price}</li>
                   <li>
