@@ -17,9 +17,9 @@ products = [
         "image": "/images/jardim.jpg",
         "rating": 4.3,
         "numReviews": 3,
-        "price": 49.90,
+        "price": 39.90,
         "description": "An awesome book.",
-        "countInStock": 15
+        "countInStock": 10
     },
     {
         "_id": 3,
@@ -30,6 +30,6 @@ products = [
         "numReviews": 3,
         "price": 49.90,
         "description": "An awesome book.",
-        "countInStock": 15
+        "countInStock": 0
     }
 ] 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { round } from 'utils/math'
 import Rating from './Rating'
 
 
@@ -21,7 +22,7 @@ export default function Product(props) {
           rating={product.rating}
           numReviews={product.numReviews}
         />
-        <div className="price">${product.price}</div>
+        <div className="price">${round(product.price)}</div>
       </div>
     </div>
   )
