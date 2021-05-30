@@ -31,5 +31,16 @@ products = [
         "price": 49.90,
         "description": "An awesome book.",
         "countInStock": 0
+    },
+    {
+        "_id": 4,
+        "name": "As Crônicas de Nárnia",
+        "author": "C. S. Lewis",
+        "image": "https://flxt.tmsimg.com/assets/p90695_p_v10_ab.jpg",
+        "rating": 3.3,
+        "numReviews": 3,
+        "price": 109.90,
+        "description": "An awesome bosok.",
+        "countInStock": 0
     }
 ] 
