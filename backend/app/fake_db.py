@@ -1,3 +1,22 @@
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+users = [
+    {
+        "name": "Gustavo",
+        "email": "admin@example.com",
+        "password": pwd_context.hash("1234"),
+        "is_admin": True
+    },
+    {
+        "name": "John",
+        "email": "john@example.com",
+        "password": pwd_context.hash("1234"),
+        "is_admin": False
+    }
+]
+
 products = [
     {
         "_id": 1,

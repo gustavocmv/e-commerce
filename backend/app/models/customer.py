@@ -3,7 +3,7 @@ from sqlalchemy import Boolean, Column, Integer, Text, DateTime, false, func
 from app.db.base_class import Base
 
 
-class Costumer(Base):
+class Customer(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(Text, index=True, nullable=False)
     email = Column(Text, unique=True, index=True, nullable=False)
