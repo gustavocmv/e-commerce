@@ -1,5 +1,4 @@
-from sqlalchemy import Boolean, Column, Integer, Text, DateTime
-from sqlalchemy.sql import func
+from sqlalchemy import Boolean, Column, Integer, Text, DateTime, false, func
 
 from app.db.base_class import Base
 
@@ -9,6 +8,6 @@ class Costumer(Base):
     name = Column(Text, index=True, nullable=False)
     email = Column(Text, unique=True, index=True, nullable=False)
     password = Column(Text, nullable=False)
-    is_admin = Column(Boolean, server_default=False, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_onupdate=func.now())
+    is_admin = Column(Boolean, server_default=false(), nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)

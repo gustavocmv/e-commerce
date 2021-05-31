@@ -26,7 +26,6 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-
 def get_url():
     try:
         from dotenv import load_dotenv
@@ -40,8 +39,7 @@ def get_url():
     port = getenv("DB_PORT")
     database = getenv("DB_DATABASE")
     app_name = getenv("APP_NAME", "E-Commerce")
-    url = f"postgresql://{user}:{password}@{host}:{port}/{database}?application_name={app_name}"
-    print(url)
+    url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
     return url
 
 
