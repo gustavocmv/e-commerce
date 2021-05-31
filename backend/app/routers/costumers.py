@@ -1,7 +1,9 @@
+from typing import List
+
 from fastapi import APIRouter
 
 from app.fake_db import seed_customers
-from app.models.customer import Customer, CustomersModel
+from app.models.customer import Customer, CustomerModel
 from app.dependencies import get_db
 
 
@@ -11,7 +13,7 @@ router = APIRouter(
 )
 
 
-@router.get("/seed", response_model=CustomersModel)
+@router.get("/seed", response_model=List[CustomerModel])
 async def create_seed_customers(db = get_db):
     customers = []
     for customer in seed_customers:

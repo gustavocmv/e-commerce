@@ -44,17 +44,13 @@ class CustomerUpdateModel(CustomerBaseModel):
 class CustomerInDBBaseModel(CustomerBaseModel):
     id: Optional[int] = None
 
-    class ConfigModel:
+    class Config:
         orm_mode = True
 
 
 # Additional properties to return via API
 class CustomerModel(CustomerInDBBaseModel):
     pass
-
-
-class CustomersModel(BaseModel):
-    customers: List[CustomerModel]
 
 
 # Additional properties stored in DB
