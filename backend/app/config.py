@@ -5,6 +5,7 @@ from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, PostgresDsn, v
 
 try:
     from dotenv import load_dotenv
+
     load_dotenv()
 except:
     pass

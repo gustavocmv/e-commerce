@@ -2,19 +2,19 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-users = [
+seed_customers = [
     {
         "name": "Gustavo",
         "email": "admin@example.com",
         "password": pwd_context.hash("1234"),
-        "is_admin": True
+        "is_admin": True,
     },
     {
         "name": "John",
         "email": "john@example.com",
         "password": pwd_context.hash("1234"),
-        "is_admin": False
-    }
+        "is_admin": False,
+    },
 ]
 
 products = [
@@ -27,7 +27,7 @@ products = [
         "numReviews": 3,
         "price": 49.90,
         "description": "An awesome book.",
-        "countInStock": 15
+        "countInStock": 15,
     },
     {
         "_id": 2,
@@ -38,7 +38,7 @@ products = [
         "numReviews": 3,
         "price": 39.90,
         "description": "An awesome book.",
-        "countInStock": 10
+        "countInStock": 10,
     },
     {
         "_id": 3,
@@ -49,7 +49,7 @@ products = [
         "numReviews": 3,
         "price": 49.90,
         "description": "An awesome book.",
-        "countInStock": 0
+        "countInStock": 0,
     },
     {
         "_id": 4,
@@ -60,6 +60,6 @@ products = [
         "numReviews": 3,
         "price": 109.90,
         "description": "An awesome bosok.",
-        "countInStock": 0
-    }
-] 
+        "countInStock": 0,
+    },
+]

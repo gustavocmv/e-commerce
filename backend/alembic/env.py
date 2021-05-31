@@ -19,6 +19,7 @@ fileConfig(config.config_file_name)
 target_metadata = None
 
 from app.db.base import Base  # noqa
+
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
@@ -26,9 +27,11 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+
 def get_url():
     try:
         from dotenv import load_dotenv
+
         load_dotenv()
     except:
         pass
@@ -85,7 +88,9 @@ def run_migrations_online():
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata, compare_type=True,
+            connection=connection,
+            target_metadata=target_metadata,
+            compare_type=True,
         )
 
         with context.begin_transaction():
