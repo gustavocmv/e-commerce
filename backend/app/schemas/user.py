@@ -1,12 +1,13 @@
-from typing import Optional, List
+from typing import List, Optional
 
 from pydantic import BaseModel, EmailStr
+
 
 # Shared properties
 class UserBaseSchema(BaseModel):
     name: Optional[str] = None
     email: Optional[EmailStr] = None
-    is_admin: Optional[bool] = True
+    is_admin: Optional[bool] = False
 
 
 # Properties to receive via API on creation

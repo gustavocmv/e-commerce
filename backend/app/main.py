@@ -2,11 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import (
-    users,
-    products,
-)
-
+from app.dependencies import validate_token
+from app.routers import login, products, users
 
 app = FastAPI()
 
@@ -21,5 +18,6 @@ if settings.BACKEND_CORS_ORIGINS:
     )
 
 
-app.include_router(users.router)
+app.include_router(login.router)
+app.include_router(users.router, dependencies=[validate_token])
 app.include_router(products.router)

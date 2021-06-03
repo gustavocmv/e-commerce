@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Integer, Text, DateTime, false, func
+from sqlalchemy import Boolean, Column, DateTime, Integer, Text, false, func
 
 from app.db.base_class import Base
 
@@ -18,3 +18,6 @@ class User(Base):
         onupdate=func.now(),
         nullable=False,
     )
+
+    def __repr__(self):
+        return f"ID: {self.id} - Name: {self.name} - Email: {self.email}"

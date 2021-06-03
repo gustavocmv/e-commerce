@@ -1,7 +1,6 @@
-from fastapi import APIRouter, Path, HTTPException
+from fastapi import APIRouter, HTTPException, Path
 
 from app.fake_db import products
-
 
 router = APIRouter(
     prefix="/products",
