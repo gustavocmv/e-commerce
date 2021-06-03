@@ -26,11 +26,7 @@ def login_access_token(
     """
     OAuth2 compatible token login, get an access token for future requests
     """
-    user = (
-        db.execute(sa.select(User).where(User.email == form_data.username))
-        .scalars()
-        .first()
-    )
+    user = User.get_by_email(db, form_data.username)
 
     if user is None or not verify_password(user.password, form_data.password):
         raise HTTPException(status_code=400, detail="Incorrect email or password")
@@ -57,8 +53,7 @@ def recover_password(email: str, db: sa.orm.Session = get_db) -> MsgSchema:
     """
     Password Recovery
     """
-    user = db.execute(query(User).where(User.email == email)).scalars().first()
-
+    user = User.get_by_email(db, email)
     if user is None:
         raise HTTPException(
             status_code=404,

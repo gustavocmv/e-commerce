@@ -1,23 +1,27 @@
-from sqlalchemy import Boolean, Column, DateTime, Integer, Text, false, func
+import sqlalchemy as sa
 
 from app.db.base_class import Base
 
 
 class User(Base):
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(Text, index=True, nullable=False)
-    email = Column(Text, unique=True, index=True, nullable=False)
-    password = Column(Text, nullable=False)
-    is_admin = Column(Boolean, server_default=false(), nullable=False)
-    created_at = Column(
-        DateTime(timezone=True), server_default=func.now(), nullable=False
+    id = sa.Column(sa.Integer, primary_key=True, index=True)
+    name = sa.Column(sa.Text, index=True, nullable=False)
+    email = sa.Column(sa.Text, unique=True, index=True, nullable=False)
+    password = sa.Column(sa.Text, nullable=False)
+    is_admin = sa.Column(sa.Boolean, server_default=sa.false(), nullable=False)
+    created_at = sa.Column(
+        sa.DateTime(timezone=True), server_default=sa.func.now(), nullable=False
     )
-    updated_at = Column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=func.now(),
+    updated_at = sa.Column(
+        sa.DateTime(timezone=True),
+        server_default=sa.func.now(),
+        onupdate=sa.func.now(),
         nullable=False,
     )
 
     def __repr__(self):
         return f"ID: {self.id} - Name: {self.name} - Email: {self.email}"
+
+    @classmethod
+    def get_by_email(cls, db, email):
+        return db.execute(sa.select(User).where(User.email == email)).scalars().first()

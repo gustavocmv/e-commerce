@@ -11,3 +11,8 @@ class Base:
     @declared_attr
     def __tablename__(cls) -> str:
         return cls.__name__.lower()
+
+    def update(self, updated_self: dict):
+        for attr, value in updated_self.items():
+            if hasattr(self, attr):
+                setattr(self, attr, value)

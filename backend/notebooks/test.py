@@ -52,9 +52,20 @@ db.add(user)
 
 # %%
 
-user = db.get(User, 4)
+user = db.get(User, 7)
 
 # %%
-user
+setattr(user, "namee", "GC")
 
+# %%
+user.update({"name": "GC", "xpto": "123"})
+# %%
+user.update({"name": "GC", "xpto": "123"})
+
+# %%
+user.name
+# %%
+user.xpto
+# %%
+db.commit()
 # %%
