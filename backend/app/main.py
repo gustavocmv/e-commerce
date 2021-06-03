@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Path, HTTPException
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import (
-    costumers,
+    users,
     products,
 )
 
@@ -20,5 +21,5 @@ if settings.BACKEND_CORS_ORIGINS:
     )
 
 
-app.include_router(costumers.router)
+app.include_router(users.router)
 app.include_router(products.router)

@@ -2,7 +2,7 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-seed_customers = [
+seed_users = [
     {
         "name": "Gustavo",
         "email": "admin@example.com",
