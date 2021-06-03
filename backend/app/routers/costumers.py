@@ -14,7 +14,7 @@ router = APIRouter(
 
 
 @router.get("/seed", response_model=List[CustomerModel])
-async def create_seed_customers(db = get_db):
+async def create_seed_customers(db=get_db):
     customers = []
     for customer in seed_customers:
         customer = Customer(

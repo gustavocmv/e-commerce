@@ -1,22 +1,24 @@
 from fastapi import FastAPI, Path, HTTPException
-from .fake_db import products
+
+from app.config import settings
+from app.routers import (
+    costumers,
+    products,
+)
 
 
 app = FastAPI()
 
-
-@app.get("/products")
-async def get_products():
-    return products
-
-
-@app.get("/products/{product_id}")
-async def get_product(product_id: int = Path(...)):
-    for product in products:
-        if product["_id"] == product_id:
-            return product
-    raise HTTPException(404, "Product not found.")
+# Set all CORS enabled origins
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
-from .routers import costumers
 app.include_router(costumers.router)
+app.include_router(products.router)
