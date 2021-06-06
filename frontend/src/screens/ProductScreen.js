@@ -38,13 +38,13 @@ export default function ProductScreen(props) {
             <Link to="/">Back to result</Link>
             <div className="row top">
               <div className="col-2">
-                <img className="large" src={product.image} alt="product" />
+                <img className="large" src={product.image} alt={product.name} />
               </div>
               <div className="col-1">
                 <ul>
                   <li><h1>{product.name}</h1></li>
                   <li><h1>{product.author}</h1></li>
-                  <li><Rating rating={product.rating} numReviews={product.numReviews} /></li>
+                  <li><Rating rating={product.rating} reviews={product.reviews} /></li>
                   <li>Price: ${round(product.price)}</li>
                   <li>
                     Description:
@@ -66,7 +66,7 @@ export default function ProductScreen(props) {
                         <div>Status</div>
                         <div >
                           {
-                            product.countInStock > 0
+                            product.stock > 0
                               ? <span className="success">In Stock</span>
                               : <span className="danger">Unavailable</span>
                           }
@@ -74,7 +74,7 @@ export default function ProductScreen(props) {
                       </div>
                     </li>
                     {
-                      product.countInStock > 0 && (
+                      product.stock > 0 && (
                         <>
                           <li>
                             <div className="row">
@@ -82,7 +82,7 @@ export default function ProductScreen(props) {
                               <div>
                                 <select value={quantity} onChange={e => setQuantity(e.target.value)}>
                                   {
-                                    [...Array(product.countInStock).keys()].map(
+                                    [...Array(product.stock).keys()].map(
                                       x => (
                                         <option key={x + 1} value={x + 1}>
                                           {x + 1}

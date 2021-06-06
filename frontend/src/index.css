@@ -165,7 +165,7 @@ img {
 
 img.small {
   max-width: 5rem;
-  width: 100%;
+  width    : 100%;
 }
 
 img.medium {
@@ -231,4 +231,45 @@ img.large {
 .alert-danger {
   color           : #a02020;
   background-color: #ffe0e0;
+}
+
+
+/* Form */
+.form {
+  max-width: 60rem;
+  margin   : 0 auto
+}
+
+.form>div {
+  display       : flex;
+  flex-direction: column;
+  margin        : 1rem;
+}
+
+.form label {
+  margin : 1rem 0;
+  display: block;
+}
+
+/* Dropdown */
+.dropdown {
+  display : inline-block;
+  position: relative;
+}
+
+.dropdown-content {
+  position        : absolute;
+  display         : none;
+  right           : 0;
+  min-width       : 12rem;
+  padding         : 1rem;
+  z-index         : 1;
+  margin          : 0;
+  background-color: #cc0033;
+  margin-top      : .4rem;
+  border-radius   : .5rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

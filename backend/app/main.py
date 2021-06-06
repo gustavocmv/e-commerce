@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import Body, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
@@ -21,3 +21,11 @@ if settings.BACKEND_CORS_ORIGINS:
 app.include_router(login.router)
 app.include_router(users.router, dependencies=[validate_token])
 app.include_router(products.router)
+
+
+@app.get("/calc-sum")
+def calc_sum(
+    a: float = Query(...),
+    b: float = Query(...),
+):
+    return a + b

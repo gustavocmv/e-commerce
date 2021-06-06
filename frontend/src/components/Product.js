@@ -7,8 +7,8 @@ import Rating from './Rating'
 export default function Product(props) {
   const { product } = props
   return (
-    <div key={product._id} className="card">
-      <Link to={`/product/${product._id}`}>
+    <div key={product.id} className="card">
+      <Link to={`/product/${product.id}`}>
         <img
           className="medium"
           src={product.image}
@@ -16,12 +16,12 @@ export default function Product(props) {
         />
       </Link>
       <div className="card-body">
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${product.id}`}>
           <h2>{product.name}</h2>
         </Link>
         <Rating
           rating={product.rating}
-          numReviews={product.numReviews}
+          reviews={product.reviews}
         />
         <div className="price">${round(product.price)}</div>
       </div>

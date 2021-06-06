@@ -1,7 +1,7 @@
 import Axios from "axios"
 import { CART_ADD_ITEM, CART_CLEAN, CART_REMOVE_ITEM } from "constants/cartConstants"
 
-const updateCartItemsLocalStorage = (getState) => 
+const updateCartItemsLocalStorage = (getState) =>
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 
 
@@ -13,8 +13,8 @@ export const addToCart = (productId, quantity) => async (dispatch, getState) => 
       name: data.name,
       image: data.image,
       price: data.price,
-      countInStock: data.countInStock,
-      product_id: data._id,
+      stock: data.stock,
+      product_id: data.id,
       quantity
     }
   })

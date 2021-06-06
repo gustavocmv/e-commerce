@@ -52,6 +52,13 @@ def get_current_user(
     return user
 
 
+@Depends
+def verify_admin(user: User = get_current_user) -> bool:
+    if not user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin user only")
+    return user.is_admin
+
+
 # @Depends
 # def get_current_admin(
 #     user: User = get_current_user,

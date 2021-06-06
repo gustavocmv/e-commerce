@@ -20,7 +20,7 @@ class User(Base):
     )
 
     def __repr__(self):
-        return f"ID: {self.id} - Name: {self.name} - Email: {self.email}"
+        return f"User - ID: {self.id} - Name: {self.name} - Email: {self.email}"
 
     @classmethod
     def get_by_email(cls, db, email):

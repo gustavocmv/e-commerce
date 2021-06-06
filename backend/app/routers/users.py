@@ -1,5 +1,3 @@
-from typing import List
-
 import sqlalchemy as sa
 from fastapi import APIRouter, HTTPException, Path
 
@@ -23,15 +21,12 @@ def create_user(
     """
     Create new user.
     """
+    user = user.dict(exclude_unset=True)
+    user["password"] = hash_password(user["password"])
+    user = User(**user)
+    db.add(user)
     try:
-        user = User(
-            name=user.name,
-            email=user.email,
-            password=hash_password(user.password),
-        )
-        db.add(user)
         db.commit()
-
     except sa.exc.IntegrityError:
         db.rollback()
         raise HTTPException(
@@ -60,7 +55,10 @@ def read_user_by_id(
     """
     Get a specific user by id.
     """
-    return db.get(User, user_id)
+    user = db.get(User, user_id)
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
 
 
 @router.put("/{user_id}", response_model=UserSchema)
@@ -74,10 +72,7 @@ def update_user(
     """
     user = db.get(User, user_id)
     if user is None:
-        raise HTTPException(
-            status_code=404,
-            detail="The user with this username does not exist in the system",
-        )
+        raise HTTPException(status_code=404, detail="User not found")
 
     updated_user = updated_user.dict(exclude_unset=True)
     try:
